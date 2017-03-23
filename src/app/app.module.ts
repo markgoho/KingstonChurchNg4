@@ -5,14 +5,36 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { HeaderComponent } from './header/header.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RoutingModule } from "app/app-routing.module";
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { BibleStudiesComponent } from './bible-studies/bible-studies.component';
+import { AboutUsModule } from "app/about-us/about-us.module";
+import { SermonsModule } from "app/sermons/sermons.module";
+import { SharedModule } from "app/shared/shared.module";
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    NavBarComponent,
+    HomeComponent,
+    FooterComponent,
+    BibleStudiesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    SharedModule,
+    AboutUsModule,
+    SermonsModule,
+    RoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
