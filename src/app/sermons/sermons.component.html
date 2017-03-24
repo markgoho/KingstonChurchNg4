@@ -1,1 +1,6 @@
+<h2>Sermons</h2>
+<div>Lessons from the Bible</div>
 <app-audio-sermon></app-audio-sermon>
+<ul *ngIf="lessons">
+  <li *ngFor="let lesson of lessons"><a routerLink="{{lesson.link}}">{{lesson.title}}</a></li>
+</ul>
