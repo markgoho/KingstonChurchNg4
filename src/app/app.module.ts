@@ -16,6 +16,11 @@ import { BibleStudiesComponent } from './bible-studies/bible-studies.component';
 import { AboutUsModule } from "app/about-us/about-us.module";
 import { SermonsModule } from "app/sermons/sermons.module";
 import { SharedModule } from "app/shared/shared.module";
+import { ArticlesModule } from "app/articles/articles.module";
+import { ResourcesModule } from "app/resources/resources.module";
+import { VisitorsModule } from "app/visitors/visitors.module";
+import { ContactModule } from "app/contact/contact.module";
+import { ArticleService } from "app/articles/article.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +29,7 @@ import { SharedModule } from "app/shared/shared.module";
     NavBarComponent,
     HomeComponent,
     FooterComponent,
-    BibleStudiesComponent
+    BibleStudiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,13 @@ import { SharedModule } from "app/shared/shared.module";
     SharedModule,
     AboutUsModule,
     SermonsModule,
+    ArticlesModule,
+    ResourcesModule,
+    VisitorsModule,
+    ContactModule,
     RoutingModule,
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
