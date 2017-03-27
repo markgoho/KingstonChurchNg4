@@ -1,4 +1,24 @@
-<h3>Create New Article</h3>
-<form>
-  
-</form>
+<div class="container">
+  <h3>Create New Article</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input 
+      type="text" 
+      placeholder="Title"
+      formControlName="title">
+    
+    
+    <select
+      *ngIf="categories$ | async as categories"
+      formControlName="category">
+      <option value="">Select Category</option>
+      <option 
+        *ngFor="let category of categories"
+        [value]="category.name">{{category.name}}</option>
+    </select>
+    <textarea 
+      placeholder="Article"
+      formControlName="content">
+    </textarea>
+    <button type="submit" [disabled]="form.invalid">Create</button>
+  </form>
+</div>

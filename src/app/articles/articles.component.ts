@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from "app/articles/article.service";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-articles',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() { }
+  categories$: Observable<any[]>
+
+  constructor( private articleService: ArticleService ) { }
 
   ngOnInit() {
+    this.categories$ = this.articleService.articleCategories;
   }
 
 }
