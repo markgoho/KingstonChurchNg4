@@ -8,12 +8,14 @@ import { ArticlesComponent } from './articles.component';
 import { ArticleComponent } from './article/article.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { ArticleCategoryComponent } from './article-category/article-category.component';
+import { SharedModule } from "app/shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
     ArticlesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ArticlesComponent, ArticleComponent, CreateArticleComponent, ArticleCategoryComponent]
 })

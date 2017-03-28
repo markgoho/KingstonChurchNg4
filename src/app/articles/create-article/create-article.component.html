@@ -6,7 +6,6 @@
       placeholder="Title"
       formControlName="title">
     
-    
     <select
       *ngIf="categories$ | async as categories"
       formControlName="category">
@@ -15,10 +14,16 @@
         *ngFor="let category of categories"
         [value]="category.route">{{category.name}}</option>
     </select>
-    <textarea 
-      placeholder="Article"
-      formControlName="content">
-    </textarea>
+
+    <app-tiny-editor
+      formControlName="content"
+      [elementId]="'my-editor'">
+    </app-tiny-editor>
+
     <button type="submit" [disabled]="form.invalid">Create</button>
+
+    <pre>{{ form.value | json}}</pre>
+
   </form>
+  
 </div>

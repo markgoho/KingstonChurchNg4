@@ -27,4 +27,8 @@ export class CreateArticleComponent implements OnInit {
     this.articleService.createArticle(this.form.value);
     this.form.reset();
   }
+
+  keyupHandler(event: string) {
+    //this.form.get('content').setValue(event);
+  }
 }
