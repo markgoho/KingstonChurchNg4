@@ -37,6 +37,7 @@ export class ArticleService {
 
   // Helper function, turns title into slug
   createSlug(title: string): string {
-    return title.replace(/\s+/g, '-').toLowerCase();
+    // http://stackoverflow.com/questions/1983648/replace-space-with-dash-and-make-all-letters-lower-case-using-javascript
+    return title.replace(/\W+/g, '-').toLowerCase();
   }
 }

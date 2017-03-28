@@ -47,6 +47,7 @@ export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor 
   editorContent: string = null;
 
   ngAfterViewInit() {
+    console.log('AfterViewInit() fired!')
     tinymce.init({
       selector: `#${this.elementId}`,
       plugins: ['link', 'table'],
@@ -60,12 +61,15 @@ export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor 
           this.onEditorContentChange.emit(tinyContent);
           this.onModelChange(tinyContent);
           this.onTouch();
-          console.log(tinyContent);
         });
       },
       // https://www.tinymce.com/docs/configure/integration-and-setup/#init_instance_callback
       // init_instance_callback: inst => inst.setContent('<span>Some content</span>')
     });
   }
+
+  ngOnDestroy() {
+		tinymce.remove(this.editor);
+	}
 
 }

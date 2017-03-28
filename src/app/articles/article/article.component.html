@@ -1,6 +1,6 @@
 <div *ngIf="article | async as article">
   <h3>{{article.title}}</h3>
   <!--<div>{{article.author}}</div>-->
-  <div>Created on {{ article.createdOn | date }}
-  <div>{{article.content}}</div>
+  <div>Published {{ article.createdOn | date }} <span *ngIf="article.author">by {{article.author}}</span></div>
+  <div [innerHTML]="article.content"></div>
 </div>

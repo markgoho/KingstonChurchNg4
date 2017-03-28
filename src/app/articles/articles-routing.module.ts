@@ -10,15 +10,17 @@ const routes: Routes = [
     path: 'articles/create', component: CreateArticleComponent
   },
   { 
-    path: 'articles', component: ArticlesComponent
-  },
-  { 
-    path: 'articles/:category',
-    component: ArticleCategoryComponent,
-    children: [
-      { path: ':article-name', component: ArticleComponent}
+    path: 'articles', children: [
+      { path: '', component: ArticlesComponent },
+      { 
+        path: ':category',
+        component: ArticleCategoryComponent,
+        children: [
+          { path: ':article-name', component: ArticleComponent}
+        ]
+      }
     ]
-  },
+  }
 ];
 
 @NgModule({
