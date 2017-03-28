@@ -16,4 +16,12 @@ export class ArticleService {
   get articleCategories(): Observable<any[]> {
     return this.af.database.list('/articleCategories');
   }
+
+  articleCategory(category): Observable<any> {
+    return this.af.database.object(`/articleCategories/${category}`);
+  }
+
+  categoryArticles(category): Observable<any[]> {
+    return this.af.database.list(`categoryArticles/${category}`);
+  }
 }

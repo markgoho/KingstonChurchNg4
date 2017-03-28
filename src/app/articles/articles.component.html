@@ -4,10 +4,9 @@
   <div *ngIf="categories$ | async as categories">
     <ul>
       <li *ngFor="let category of categories">
-        {{category.name}}
+        <a [routerLink]="category.route">{{category.name}}</a>
       </li>
     </ul>
   </div>
   <div><a routerLink="create">Create New Article</a></div>
-  <router-outlet></router-outlet>
 </div>
