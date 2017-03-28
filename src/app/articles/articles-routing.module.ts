@@ -15,9 +15,9 @@ const routes: Routes = [
   { 
     path: 'articles/:category',
     component: ArticleCategoryComponent,
-    // children: [
-    //   { path: ':article-name'}
-    // ]
+    children: [
+      { path: ':article-name', component: ArticleComponent}
+    ]
   },
 ];
 

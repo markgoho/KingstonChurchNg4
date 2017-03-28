@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from "app/articles/article.service";
+import { ActivatedRoute } from "@angular/router";
+import { Article } from "app/articles/article";
+
+import "rxjs/add/operator/switchMap";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-article',
@@ -8,8 +13,12 @@ import { ArticleService } from "app/articles/article.service";
 })
 export class ArticleComponent implements OnInit {
 
-  constructor( private articleService: ArticleService) { }
+  article: Observable<Article>;
 
-  ngOnInit() { }
+  constructor( private articleService: ArticleService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.article = this.route.params.switchMap(data => this.articleService.getArticle(data['article-name']));
+  }
 
 }

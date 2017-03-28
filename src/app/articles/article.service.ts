@@ -9,8 +9,9 @@ export class ArticleService {
   constructor(private af: AngularFire) { }
 
   createArticle(article: Article) {
-    article.createdOn = Date.now()
-    this.af.database.list('/articles').push(article);
+    article.createdOn = Date.now();
+    const slug = this.createSlug(article.title);
+    this.af.database.object(`/articles/${slug}`).set(article);
   }
 
   get articleCategories(): Observable<any[]> {
@@ -22,6 +23,20 @@ export class ArticleService {
   }
 
   categoryArticles(category): Observable<any[]> {
-    return this.af.database.list(`categoryArticles/${category}`);
+    return this.af.database.list(`/articles`, { 
+      query: {
+        orderByChild: 'category',
+        equalTo: category
+      }
+    });
+  }
+
+  getArticle(slug: string): Observable<Article> {
+    return this.af.database.object(`/articles/${slug}`);
+  }
+
+  // Helper function, turns title into slug
+  createSlug(title: string): string {
+    return title.replace(/\s+/g, '-').toLowerCase();
   }
 }

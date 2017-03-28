@@ -1,1 +1,6 @@
-<h3>Article Name</h3>
+<div *ngIf="article | async as article">
+  <h3>{{article.title}}</h3>
+  <!--<div>{{article.author}}</div>-->
+  <div>Created on {{ article.createdOn | date }}
+  <div>{{article.content}}</div>
+</div>
