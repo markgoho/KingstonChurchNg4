@@ -17,12 +17,11 @@
 
     <app-tiny-editor
       formControlName="content"
+      [initialContent]="initialContent"
       [elementId]="'my-editor'">
     </app-tiny-editor>
 
     <button type="submit" [disabled]="form.invalid">Create</button>
-
-    <pre>{{ form.value | json}}</pre>
 
   </form>
   

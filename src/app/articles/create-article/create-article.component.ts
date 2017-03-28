@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from "../article.service";
 import { Observable } from "rxjs/Observable";
 
@@ -10,10 +10,12 @@ import { Observable } from "rxjs/Observable";
 })
 export class CreateArticleComponent implements OnInit {
   categories$: Observable<any[]>
+
+  initialContent: string;
   
   form = this.fb.group({
-    title: '',
-    category: '',
+    title: ['', Validators.required],
+    category: ['', Validators.required],
     content: ''
   });
 
@@ -21,14 +23,12 @@ export class CreateArticleComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.articleService.articleCategories;
+    this.initialContent = this.form.get('content').value;
   }
 
   onSubmit() {
     this.articleService.createArticle(this.form.value);
     this.form.reset();
-  }
-
-  keyupHandler(event: string) {
-    //this.form.get('content').setValue(event);
+    this.initialContent = '';
   }
 }

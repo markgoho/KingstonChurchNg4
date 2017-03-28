@@ -23,7 +23,7 @@ const contentAccessor = {
       <textarea id="{{elementId}}"></textarea>
   `
 })
-export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor {
+export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor, OnChanges {
   private onTouch: Function;
   private onModelChange: Function;
   
@@ -38,7 +38,8 @@ export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor 
     this.editorContent = value;
   }
 
-  @Input() elementId: String;
+  @Input() elementId: string;
+  @Input() initialContent: string;
   @Output() onEditorContentChange = new EventEmitter();
 
   constructor() { }
@@ -47,7 +48,6 @@ export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor 
   editorContent: string = null;
 
   ngAfterViewInit() {
-    console.log('AfterViewInit() fired!')
     tinymce.init({
       selector: `#${this.elementId}`,
       plugins: ['link', 'table'],
@@ -64,8 +64,13 @@ export class TinyEditorComponent implements AfterViewInit, ControlValueAccessor 
         });
       },
       // https://www.tinymce.com/docs/configure/integration-and-setup/#init_instance_callback
-      // init_instance_callback: inst => inst.setContent('<span>Some content</span>')
+      // init_instance_callback: inst => inst.setContent(this.initialContent),
+      init_instance_callback: inst => inst.setContent(this.initialContent.toString())
     });
+  }
+
+  ngOnChanges() {
+    console.log('OnChanges fired!');
   }
 
   ngOnDestroy() {
