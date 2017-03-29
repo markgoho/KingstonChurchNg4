@@ -15,14 +15,15 @@
         [value]="category.route">{{category.name}}</option>
     </select>
 
+      <!--formControlName="content"-->
     <app-tiny-editor
-      formControlName="content"
       [initialContent]="initialContent"
-      [elementId]="'my-editor'">
+      [elementId]="'my-editor'"
+      (onEditorContentChange)="handleContentChange($event)">
     </app-tiny-editor>
 
     <button type="submit" [disabled]="form.invalid">Create</button>
-
+    <pre>{{form.value | json}}</pre>
   </form>
   
 </div>

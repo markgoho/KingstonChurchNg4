@@ -31,4 +31,8 @@ export class CreateArticleComponent implements OnInit {
     this.form.reset();
     this.initialContent = '';
   }
+
+  handleContentChange(event) {
+    this.form.patchValue({ content: event });
+  }
 }
