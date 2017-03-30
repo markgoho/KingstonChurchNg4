@@ -5,4 +5,5 @@ export interface Article {
   createdOn?: number;
   slug: string;
   title: string;
+  description: string;
 }

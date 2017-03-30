@@ -21,6 +21,7 @@ import { ResourcesModule } from "app/resources/resources.module";
 import { VisitorsModule } from "app/visitors/visitors.module";
 import { ContactModule } from "app/contact/contact.module";
 import { ArticleService } from "app/articles/article.service";
+import { MetaDataService } from "app/meta-data.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ArticleService } from "app/articles/article.service";
     ContactModule,
     RoutingModule,
   ],
-  providers: [ArticleService],
+  providers: [ArticleService, MetaDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

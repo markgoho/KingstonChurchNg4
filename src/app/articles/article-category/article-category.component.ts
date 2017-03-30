@@ -20,9 +20,7 @@ export class ArticleCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.category = this.route.params.switchMap(data => {
-      console.log(data['category']);
       return this.articleService.articleCategory(data['category']);
-
     });
     this.articleList = this.route.params.switchMap(data => this.articleService.categoryArticles(data['category']));
   }

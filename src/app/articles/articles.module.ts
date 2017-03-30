@@ -17,6 +17,11 @@ import { SharedModule } from "app/shared/shared.module";
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [ArticlesComponent, ArticleComponent, CreateArticleComponent, ArticleCategoryComponent]
+  declarations: [
+    ArticlesComponent, 
+    ArticleComponent, 
+    CreateArticleComponent, 
+    ArticleCategoryComponent
+  ]
 })
 export class ArticlesModule { }

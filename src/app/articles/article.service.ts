@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFire } from "angularfire2";
 import { Article } from "app/articles/article";
 import { Observable } from "rxjs/Observable";
+import { MetaDataService } from "app/meta-data.service";
 
 @Injectable()
 export class ArticleService {
 
-  constructor(private af: AngularFire) { }
+  constructor(private af: AngularFire, private meta: MetaDataService) { }
 
   createArticle(article: Article) {
     article.createdOn = Date.now();
+    article.description = this.meta.generateDescription(article.content);
     const slug = this.createSlug(article.title);
     this.af.database.object(`/articles/${slug}`).set(article);
   }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from "../article.service";
 import { Observable } from "rxjs/Observable";
-import { TinyEditorComponent } from "app/shared/tiny-editor/tiny-editor.component";
 
 @Component({
   selector: 'app-create-article',
@@ -24,15 +23,10 @@ export class CreateArticleComponent implements OnInit {
 
   ngOnInit() {
     this.categories$ = this.articleService.articleCategories;
-    this.initialContent = this.form.get('content').value;
   }
 
   onSubmit() {
     this.articleService.createArticle(this.form.value);
     this.form.reset();
   }
-
-  handleContentChange(event) {
-    this.form.patchValue({ content: event });
-  }
-}
+}  

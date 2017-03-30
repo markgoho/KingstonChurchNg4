@@ -15,15 +15,10 @@
         [value]="category.route">{{category.name}}</option>
     </select>
 
-      <!--formControlName="content"-->
-    <app-tiny-editor
-      [initialContent]="initialContent"
-      [elementId]="'my-editor'"
-      (onEditorContentChange)="handleContentChange($event)">
-    </app-tiny-editor>
+    <quill-editor formControlName="content"></quill-editor>
 
     <button type="submit" [disabled]="form.invalid">Create</button>
-    <pre>{{form.value | json}}</pre>
+
   </form>
   
 </div>
