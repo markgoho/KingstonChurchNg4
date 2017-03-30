@@ -13,13 +13,7 @@ import { RoutingModule } from "app/app-routing.module";
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { BibleStudiesComponent } from './bible-studies/bible-studies.component';
-import { AboutUsModule } from "app/about-us/about-us.module";
-import { SermonsModule } from "app/sermons/sermons.module";
 import { SharedModule } from "app/shared/shared.module";
-import { ArticlesModule } from "app/articles/articles.module";
-import { ResourcesModule } from "app/resources/resources.module";
-import { VisitorsModule } from "app/visitors/visitors.module";
-import { ContactModule } from "app/contact/contact.module";
 import { ArticleService } from "app/articles/article.service";
 import { MetaDataService } from "app/meta-data.service";
 
@@ -38,12 +32,6 @@ import { MetaDataService } from "app/meta-data.service";
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
-    AboutUsModule,
-    SermonsModule,
-    ArticlesModule,
-    ResourcesModule,
-    VisitorsModule,
-    ContactModule,
     RoutingModule,
   ],
   providers: [ArticleService, MetaDataService],

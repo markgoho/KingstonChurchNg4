@@ -7,10 +7,10 @@ import { ArticleCategoryComponent } from "app/articles/article-category/article-
 
 const routes: Routes = [
   {
-    path: 'articles/create', component: CreateArticleComponent
+    path: 'create', component: CreateArticleComponent
   },
   { 
-    path: 'articles', children: [
+    path: '', children: [
       { path: '', component: ArticlesComponent },
       { 
         path: ':category',

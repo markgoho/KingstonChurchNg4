@@ -4,8 +4,8 @@ import { SermonsComponent } from "app/sermons/sermons.component";
 import { LessonsComponent } from "app/sermons/lessons/lessons.component";
 
 const routes: Routes = [
-  { path: 'sermons', component: SermonsComponent },
-  { path: 'sermons/:lesson', component: LessonsComponent }  
+  { path: '', component: SermonsComponent },
+  { path: ':lesson', component: LessonsComponent }  
 ];
 
 @NgModule({
