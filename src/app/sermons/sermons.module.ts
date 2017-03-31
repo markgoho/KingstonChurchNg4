@@ -5,6 +5,7 @@ import { SermonsRoutingModule } from './sermons-routing.module';
 import { SermonsComponent } from './sermons.component';
 import { SharedModule } from "app/shared/shared.module";
 import { LessonsComponent } from './lessons/lessons.component';
+import { CreateSermonComponent } from './create-sermon/create-sermon.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { LessonsComponent } from './lessons/lessons.component';
     SermonsRoutingModule,
     SharedModule,
   ],
-  declarations: [SermonsComponent, LessonsComponent]
+  declarations: [SermonsComponent, LessonsComponent, CreateSermonComponent]
 })
 export class SermonsModule { }
