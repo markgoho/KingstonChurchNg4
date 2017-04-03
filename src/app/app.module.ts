@@ -16,6 +16,7 @@ import { BibleStudiesComponent } from './bible-studies/bible-studies.component';
 import { SharedModule } from "app/shared/shared.module";
 import { ArticleService } from "app/articles/article.service";
 import { MetaDataService } from "app/meta-data.service";
+import { SermonService } from "app/sermons/sermon.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import { MetaDataService } from "app/meta-data.service";
     SharedModule,
     RoutingModule,
   ],
-  providers: [ArticleService, MetaDataService],
+  providers: [
+    ArticleService, 
+    MetaDataService,
+    SermonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

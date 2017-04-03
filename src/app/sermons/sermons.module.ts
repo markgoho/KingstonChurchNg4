@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SermonsRoutingModule } from './sermons-routing.module';
 import { SermonsComponent } from './sermons.component';
@@ -12,6 +13,7 @@ import { CreateSermonComponent } from './create-sermon/create-sermon.component';
     CommonModule,
     SermonsRoutingModule,
     SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [SermonsComponent, LessonsComponent, CreateSermonComponent]
 })

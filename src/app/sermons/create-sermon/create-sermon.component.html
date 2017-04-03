@@ -1,5 +1,53 @@
 <div class="container">
   <h2>Add New Sermon</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+    <input 
+      type="text" 
+      placeholder="Title"
+      formControlName="title">
+    
+    <div formGroupName="scripture">
+      
+      <select
+        formControlName="book">
+        <option value="">Select Book</option>
+        <optgroup label="Old Testament">
+          <option *ngFor="let book of books.old" [value]="book">{{book}}</option>
+        </optgroup>
+        <optgroup label="New Testament">
+          <option *ngFor="let book of books.new" [value]="book">{{book}}</option>
+        </optgroup>
+        
+      </select>
+      
+      <input
+        placeholder="chapter"
+        type="number"
+        formControlName="chapter">
+      
+      <input
+        placeholder="verse(s)"
+        type="text"
+        formControlName="verse">
+    
+    </div>
+
+    <input type="text" placeholder="Audio Link" readonly formControlName="audioLink">
+    <br>
+    <input id="new-audio-input" type="file"
+           name="inputFile" accept="audio/*"
+           (change)="onInputFileChange($event)" >
+
+    <progress [attr.value]="progressValue" max="100" id="uploader"></progress>
+    <br>
+    <button type="submit" [disabled]="form.invalid">Create</button>
+
+    
+
+    <pre>{{form.value | json}}</pre>
+
+  </form>
   
   
 </div>
