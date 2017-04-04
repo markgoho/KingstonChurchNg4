@@ -1,0 +1,10 @@
+<div *ngIf="sermon | async as sermon">
+  <div *ngFor="let serm of sermon">
+    <h3>{{serm.title}}</h3>
+    <div>{{serm.scriptureRef}}</div>
+    <audio controls="controls">
+      Your browser doesn't support the <code>audio</code> element.
+      <source [src]="serm.audioLink" type="audio/mp3">
+    </audio>
+  </div>
+</div>

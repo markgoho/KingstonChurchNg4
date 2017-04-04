@@ -1,9 +1,19 @@
 <div class="container">
   <h2>Sermons</h2>
-  <div>Lessons from the Bible</div>
-  <app-audio-sermon></app-audio-sermon>
-  <ul *ngIf="lessons">
-    <li *ngFor="let lesson of lessons"><a routerLink="{{lesson.link}}">{{lesson.title}}</a></li>
-  </ul>
-  <div><a routerLink="create">Add Sermon</a></div>
+  
+  <div *ngIf="currentAudioSermon$ | async as sermon">
+    <h3>Current Audio Sermon</h3>
+
+    <div *ngFor="let sermon of sermon"><a [routerLink]="sermon.slug">{{sermon.title}}</a> - {{sermon.scriptureRef}}</div>
+  </div>
+
+  <div *ngIf="sermonCategories$ | async as categories">
+    <h3>Sermon Categories</h3>
+    <ul>
+      <li *ngFor="let category of categories">
+        <a [routerLink]="category.$key">{{category.$value}}</a>
+      </li>
+    </ul>
+  </div>
+  <div><a routerLink="create">Create New Sermon</a></div>
 </div>

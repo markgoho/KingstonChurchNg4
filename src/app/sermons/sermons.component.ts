@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { Observable } from "rxjs/Observable";
+import { Sermon } from "app/sermons/sermon";
+import { SermonService } from "app/sermons/sermon.service";
 
 @Component({
   selector: 'app-sermons',
@@ -8,15 +11,14 @@ import { Meta } from '@angular/platform-browser';
 })
 export class SermonsComponent implements OnInit {
 
-  
+  currentAudioSermon$: Observable<Sermon[]>;
+  sermonCategories$: Observable<any>;
 
-  constructor(private meta: Meta) { }
+  constructor(private sermonService: SermonService) { }
 
   ngOnInit() {
-    this.meta.addTags([
-      { name: 'KEYWORDS', id: 'mKeywords', content: 'Religion and spirituality, Kingston Church of Christ, Sermons.'},
-      { name: 'DESCRIPTION', id: 'mDescription', content: 'Lessons from the Bible. CURRENT AUDIO LESSON:  Paul Sails to Rome (Acts27:1-28:15)'}
-    ]);
+    this.currentAudioSermon$ = this.sermonService.latestSermon;
+    this.sermonCategories$ = this.sermonService.sermonCategories;
   }
 
 }

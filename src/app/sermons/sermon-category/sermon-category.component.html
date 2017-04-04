@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngIf="category | async as category">
+    <h2>
+      <a routerLink="/sermons">Sermons</a> > {{category.$value}}
+    </h2>
+  </div>
+  <div *ngIf="sermonList | async as sermons">
+    <ul>
+      <li *ngFor="let sermon of sermons">
+        <a [routerLink]="sermon.slug">{{sermon.title}}</a>
+      </li>
+    </ul>
+  </div>
+  <router-outlet></router-outlet>
+</div>

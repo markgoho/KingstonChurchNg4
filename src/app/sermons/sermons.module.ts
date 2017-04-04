@@ -5,8 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SermonsRoutingModule } from './sermons-routing.module';
 import { SermonsComponent } from './sermons.component';
 import { SharedModule } from "app/shared/shared.module";
-import { LessonsComponent } from './lessons/lessons.component';
 import { CreateSermonComponent } from './create-sermon/create-sermon.component';
+import { SermonComponent } from './sermon/sermon.component';
+import { SermonCategoryComponent } from './sermon-category/sermon-category.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { CreateSermonComponent } from './create-sermon/create-sermon.component';
     SharedModule,
     ReactiveFormsModule
   ],
-  declarations: [SermonsComponent, LessonsComponent, CreateSermonComponent]
+  declarations: [SermonsComponent, CreateSermonComponent, SermonComponent, SermonCategoryComponent]
 })
 export class SermonsModule { }

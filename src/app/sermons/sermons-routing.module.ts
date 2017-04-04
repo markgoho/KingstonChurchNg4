@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SermonsComponent } from "app/sermons/sermons.component";
-import { LessonsComponent } from "app/sermons/lessons/lessons.component";
 import { CreateSermonComponent } from "app/sermons/create-sermon/create-sermon.component";
+import { SermonComponent } from "app/sermons/sermon/sermon.component";
+import { SermonCategoryComponent } from "app/sermons/sermon-category/sermon-category.component";
 
 const routes: Routes = [
-  { path: '', component: SermonsComponent },
   { path: 'create', component: CreateSermonComponent },
-  { path: ':lesson', component: LessonsComponent }
+  { 
+    path: '', children: [
+      { path: '', component: SermonsComponent },
+      { 
+        path: ':category',
+        component: SermonCategoryComponent,
+        children: [
+          { path: ':sermon-name', component: SermonComponent }
+        ]
+      }
+    ]
+  }
 ];
 
 @NgModule({
