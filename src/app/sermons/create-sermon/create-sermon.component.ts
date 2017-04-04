@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
   templateUrl: './create-sermon.component.html',
   styleUrls: ['./create-sermon.component.scss']
 })
-export class CreateSermonComponent implements OnInit, OnChanges {
+export class CreateSermonComponent implements OnInit {
 
   form = this.fb.group({
     title: ['', Validators.required],
@@ -22,6 +22,7 @@ export class CreateSermonComponent implements OnInit, OnChanges {
       chapter: ['', Validators.required],
       verse: ['', Validators.required]
     }),
+    category: ['', Validators.required],
     audioLink: ['', Validators.required]
   });
 
@@ -100,13 +101,9 @@ export class CreateSermonComponent implements OnInit, OnChanges {
 
   progressValue: number = 0;
 
-  constructor(private fb: FormBuilder, private af: AngularFire) { }
+  constructor(private fb: FormBuilder, private af: AngularFire, private sermonService: SermonService) { }
 
   ngOnInit() {
-  }
-
-  ngOnChanges() {
-    console.log('Changes!');
   }
 
   onInputFileChange(evt:Event) {
@@ -119,15 +116,13 @@ export class CreateSermonComponent implements OnInit, OnChanges {
   }
 
   upload(file) {
-    console.log(file);
 
     // Construct the path
     let storageRef = firebase.storage().ref();
-    let path = `/sermons/audio/${file.name}`;
+    let path = `/sermons/${file.name}`;
     let audioPath = storageRef.child(path);
 
     const scripture = `${this.form.get('scripture.book').value} ${this.form.get('scripture.chapter').value}:${this.form.get('scripture.verse').value}`;
-
     
     const metadata = {
       contentType: file.type,
@@ -146,7 +141,6 @@ export class CreateSermonComponent implements OnInit, OnChanges {
         snapshot => {
           let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           this.progressValue = percentage;
-          console.log(this.progressValue);
         }, 
         // Called on errors
         error => {
@@ -159,6 +153,11 @@ export class CreateSermonComponent implements OnInit, OnChanges {
           this.form.patchValue({ audioLink: url });
         }
       );
+  }
+
+  onSubmit() {
+    this.sermonService.createSermon(this.form.value);
+    this.form.reset();
   }
 
 }

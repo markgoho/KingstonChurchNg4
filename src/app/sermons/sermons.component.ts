@@ -8,11 +8,7 @@ import { Meta } from '@angular/platform-browser';
 })
 export class SermonsComponent implements OnInit {
 
-  lessons = [
-    {title: 'Lessons in Luke', link: 'lessons_in_luke'},
-    {title: 'Lessons in Acts', link: 'lessons_in_acts'},
-    {title: 'Miscellaneous Lessons', link: 'miscellaneous_sermons'}
-  ];
+  
 
   constructor(private meta: Meta) { }
 
