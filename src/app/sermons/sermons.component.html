@@ -3,9 +3,13 @@
   
   <div *ngIf="currentAudioSermon$ | async as sermon">
     <h3>Current Audio Sermon</h3>
-
-    <div *ngFor="let sermon of sermon"><a [routerLink]="sermon.slug">{{sermon.title}}</a> - {{sermon.scriptureRef}}</div>
+    <div *ngFor="let serm of sermon">
+      <a [routerLink]="[serm.category, serm.slug]">{{serm.title}}</a> - {{serm.scriptureRef}}
+      <div>Uploaded: {{serm.createdOn | date}}</div>
+    </div>
   </div>
+
+  
 
   <div *ngIf="sermonCategories$ | async as categories">
     <h3>Sermon Categories</h3>
