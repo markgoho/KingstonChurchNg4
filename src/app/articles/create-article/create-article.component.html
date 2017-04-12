@@ -15,7 +15,7 @@
         [value]="category.route">{{category.name}}</option>
     </select>
 
-    <quill-editor formControlName="content"></quill-editor>
+    <p-editor formControlName="content" [style]="{'height':'320px'}"></p-editor>
 
     <button type="submit" [disabled]="form.invalid">Create</button>
 

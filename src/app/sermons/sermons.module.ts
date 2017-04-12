@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SermonsRoutingModule } from './sermons-routing.module';
 import { SermonsComponent } from './sermons.component';
-import { SharedModule } from "app/shared/shared.module";
+import { KingstonSharedModule } from "app/shared/shared.module";
 import { CreateSermonComponent } from './create-sermon/create-sermon.component';
 import { SermonComponent } from './sermon/sermon.component';
 import { SermonCategoryComponent } from './sermon-category/sermon-category.component';
@@ -13,7 +13,7 @@ import { SermonCategoryComponent } from './sermon-category/sermon-category.compo
   imports: [
     CommonModule,
     SermonsRoutingModule,
-    SharedModule,
+    KingstonSharedModule,
     ReactiveFormsModule
   ],
   declarations: [SermonsComponent, CreateSermonComponent, SermonComponent, SermonCategoryComponent]
