@@ -101,7 +101,9 @@ export class CreateSermonComponent implements OnInit {
 
   progressValue: number = 0;
 
-  constructor(private fb: FormBuilder, private af: AngularFire, private sermonService: SermonService) { }
+  constructor(private fb: FormBuilder, 
+              private af: AngularFire, 
+              private sermonService: SermonService) { }
 
   ngOnInit() {
   }
