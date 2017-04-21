@@ -15,7 +15,7 @@
         [value]="category.route">{{category.name}}</option>
     </select>
 
-    <p-editor formControlName="content" [style]="{'height':'320px'}"></p-editor>
+    <p-editor formControlName="content" [style]="{'height':'320px'}" placeholder="Enter article text here..."></p-editor>
 
     <button type="submit" [disabled]="form.invalid">Create</button>
 
