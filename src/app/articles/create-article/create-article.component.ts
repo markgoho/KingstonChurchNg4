@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ArticleService } from "../article.service";
-import { Observable } from "rxjs/Observable";
+import { ArticleService } from '../article.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-create-article',
@@ -9,17 +9,20 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./create-article.component.scss']
 })
 export class CreateArticleComponent implements OnInit {
-  categories$: Observable<any[]>
+  categories$: Observable<any[]>;
 
   initialContent: string;
-  
+
   form = this.fb.group({
     title: ['', Validators.required],
     category: ['', Validators.required],
     content: ''
   });
 
-  constructor( private fb: FormBuilder, private articleService: ArticleService ) {}
+  constructor(
+    private fb: FormBuilder,
+    private articleService: ArticleService
+  ) {}
 
   ngOnInit() {
     this.categories$ = this.articleService.articleCategories;
@@ -29,4 +32,4 @@ export class CreateArticleComponent implements OnInit {
     this.articleService.createArticle(this.form.value);
     this.form.reset();
   }
-}  
+}

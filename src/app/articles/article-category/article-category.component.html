@@ -1,6 +1,7 @@
 <div class="container">
   <div *ngIf="category | async as category">
-    <h2><a routerLink="/articles">Articles</a> > {{category.name}}</h2>
+    <h2>
+      <a routerLink="/articles">Articles</a> > {{category.name}}</h2>
   </div>
   <div *ngIf="articleList | async as articles">
     <ul>

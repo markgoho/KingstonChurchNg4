@@ -5,10 +5,7 @@ import { VisitorsRoutingModule } from './visitors-routing.module';
 import { VisitorsComponent } from './visitors.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    VisitorsRoutingModule
-  ],
+  imports: [CommonModule, VisitorsRoutingModule],
   declarations: [VisitorsComponent]
 })
-export class VisitorsModule { }
+export class VisitorsModule {}

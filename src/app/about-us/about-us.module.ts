@@ -6,10 +6,7 @@ import { AboutUsComponent } from './about-us.component';
 import { BibleSaysAboutComponent } from './bible-says-about/bible-says-about.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AboutUsRoutingModule
-  ],
+  imports: [CommonModule, AboutUsRoutingModule],
   declarations: [AboutUsComponent, BibleSaysAboutComponent]
 })
-export class AboutUsModule { }
+export class AboutUsModule {}

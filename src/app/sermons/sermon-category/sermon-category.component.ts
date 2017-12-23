@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { SermonService } from "app/sermons/sermon.service";
-import { Observable } from "rxjs/Observable";
+import { ActivatedRoute } from '@angular/router';
+import { SermonService } from '../../sermons/sermon.service';
+import { Observable } from 'rxjs/Observable';
 
-import "rxjs/add/operator/switchMap";
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-sermon-category',
@@ -11,11 +11,13 @@ import "rxjs/add/operator/switchMap";
   styleUrls: ['./sermon-category.component.scss']
 })
 export class SermonCategoryComponent implements OnInit {
-
   category: Observable<string>;
   sermonList: Observable<any[]>;
 
-  constructor(private route: ActivatedRoute, private sermonService: SermonService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private sermonService: SermonService
+  ) {}
 
   ngOnInit() {
     this.category = this.route.params.switchMap(data => {
@@ -23,7 +25,6 @@ export class SermonCategoryComponent implements OnInit {
     });
     this.sermonList = this.route.params.switchMap(data => {
       return this.sermonService.sermonsByCategory(data['category']);
-    })
+    });
   }
-
 }

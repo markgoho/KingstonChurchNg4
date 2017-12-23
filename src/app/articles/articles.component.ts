@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from "app/articles/article.service";
-import { Observable } from "rxjs/Observable";
+import { ArticleService } from '../articles/article.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-articles',
@@ -8,13 +8,11 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
+  categories$: Observable<any[]>;
 
-  categories$: Observable<any[]>
-
-  constructor( private articleService: ArticleService ) { }
+  constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
     this.categories$ = this.articleService.articleCategories;
   }
-
 }

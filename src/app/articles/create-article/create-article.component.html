@@ -1,24 +1,25 @@
 <div class="container">
   <h3>Create New Article</h3>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input 
-      type="text" 
-      placeholder="Title"
-      formControlName="title">
-    
-    <select
-      *ngIf="categories$ | async as categories"
-      formControlName="category">
+  <form [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+    <input type="text"
+           placeholder="Title"
+           formControlName="title">
+
+    <select *ngIf="categories$ | async as categories"
+            formControlName="category">
       <option value="">Select Category</option>
-      <option 
-        *ngFor="let category of categories"
-        [value]="category.route">{{category.name}}</option>
+      <option *ngFor="let category of categories"
+              [value]="category.route">{{category.name}}</option>
     </select>
 
-    <p-editor formControlName="content" [style]="{'height':'320px'}" placeholder="Enter article text here..."></p-editor>
+    <p-editor formControlName="content"
+              [style]="{'height':'320px'}"
+              placeholder="Enter article text here..."></p-editor>
 
-    <button type="submit" [disabled]="form.invalid">Create</button>
+    <button type="submit"
+            [disabled]="form.invalid">Create</button>
 
   </form>
-  
+
 </div>

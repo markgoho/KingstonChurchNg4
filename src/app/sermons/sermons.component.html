@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Sermons</h2>
-  
+
   <div *ngIf="currentAudioSermon$ | async as sermon">
     <h3>Current Audio Sermon</h3>
     <div *ngFor="let serm of sermon">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  
+
 
   <div *ngIf="sermonCategories$ | async as categories">
     <h3>Sermon Categories</h3>
@@ -19,5 +19,7 @@
       </li>
     </ul>
   </div>
-  <div><a routerLink="create">Create New Sermon</a></div>
+  <div>
+    <a routerLink="create">Create New Sermon</a>
+  </div>
 </div>

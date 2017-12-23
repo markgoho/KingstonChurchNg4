@@ -1,28 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from "app/home/home.component";
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '',
+    component: HomeComponent
   },
   {
-    path: 'articles', loadChildren: 'app/articles/articles.module#ArticlesModule'
+    path: 'articles',
+    loadChildren: 'app/articles/articles.module#ArticlesModule'
   },
   {
-    path: 'about', loadChildren: 'app/about-us/about-us.module#AboutUsModule'
+    path: 'about',
+    loadChildren: 'app/about-us/about-us.module#AboutUsModule'
   },
   {
-    path: 'contact', loadChildren: 'app/contact/contact.module#ContactModule'
+    path: 'contact',
+    loadChildren: 'app/contact/contact.module#ContactModule'
   },
   {
-    path: 'resources', loadChildren: 'app/resources/resources.module#ResourcesModule'
+    path: 'resources',
+    loadChildren: 'app/resources/resources.module#ResourcesModule'
   },
   {
-    path: 'sermons', loadChildren: 'app/sermons/sermons.module#SermonsModule'
+    path: 'sermons',
+    loadChildren: 'app/sermons/sermons.module#SermonsModule'
   },
   {
-    path: 'visitors', loadChildren: 'app/visitors/visitors.module#VisitorsModule'
+    path: 'visitors',
+    loadChildren: 'app/visitors/visitors.module#VisitorsModule'
   }
 ];
 
@@ -30,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RoutingModule { }
+export class RoutingModule {}

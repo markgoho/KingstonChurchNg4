@@ -1,26 +1,32 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>KingstonChurchNg4</title>
+  <title>Kc4</title>
   <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <link rel="icon"
+        type="image/x-icon"
+        href="favicon.ico">
 </head>
+
 <body>
   <app-root>
     <style>
       html {
         background: #171717;
       }
+
       app-root {
         display: flex;
         flex-direction: column;
         height: 100vh;
         justify-content: center;
       }
+
       h1 {
         color: white;
         font-size: 2.827em;
@@ -28,12 +34,14 @@
         padding: 1em 1em 3em;
         text-align: center;
       }
+
       .loader,
       .loader:after {
         border-radius: 50%;
         width: 10em;
         height: 10em;
       }
+
       .loader {
         margin: 3.75rem auto;
         font-size: 0.625rem;
@@ -43,6 +51,7 @@
         transform: translateZ(0);
         animation: loader 1.1s infinite linear;
       }
+
       @-webkit-keyframes loader {
         0% {
           transform: rotate(0deg);
@@ -51,6 +60,7 @@
           transform: rotate(360deg);
         }
       }
+
       @keyframes loader {
         0% {
           transform: rotate(0deg);
@@ -66,4 +76,5 @@
     </h1>
   </app-root>
 </body>
+
 </html>

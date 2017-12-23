@@ -1,61 +1,67 @@
 <div class="container">
   <h2>Add New Sermon</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    
-    <input 
-      type="text" 
-      placeholder="Title"
-      formControlName="title">
-    
+  <form [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+
+    <input type="text"
+           placeholder="Title"
+           formControlName="title">
+
     <div formGroupName="scripture">
-      
-      <select
-        formControlName="book">
+
+      <select formControlName="book">
         <option value="">Select Book</option>
         <optgroup label="Old Testament">
-          <option *ngFor="let book of books.old" [value]="book">{{book}}</option>
+          <option *ngFor="let book of books.old"
+                  [value]="book">{{book}}</option>
         </optgroup>
         <optgroup label="New Testament">
-          <option *ngFor="let book of books.new" [value]="book">{{book}}</option>
+          <option *ngFor="let book of books.new"
+                  [value]="book">{{book}}</option>
         </optgroup>
-        
+
       </select>
-      
-      <input
-        placeholder="chapter"
-        type="number"
-        formControlName="chapter">
-      
-      <input
-        placeholder="verse(s)"
-        type="text"
-        formControlName="verse">
-    
+
+      <input placeholder="chapter"
+             type="number"
+             formControlName="chapter">
+
+      <input placeholder="verse(s)"
+             type="text"
+             formControlName="verse">
+
     </div>
 
-    <select
-        formControlName="category">
-        <option value="">Select a Category</option>
-        <option value="lessons-in-luke">Lessons in Luke</option>
-        <option value="lessons-in-acts">Lessons in Luke</option>
-        <option value="miscellaneous">Miscellaneous</option>
+    <select formControlName="category">
+      <option value="">Select a Category</option>
+      <option value="lessons-in-luke">Lessons in Luke</option>
+      <option value="lessons-in-acts">Lessons in Luke</option>
+      <option value="miscellaneous">Miscellaneous</option>
     </select>
 
     <!--Show div once title and scripture are filled in-->
     <div *ngIf="form.get('title').valid && form.get('scripture').valid && form.get('category').valid">
-      <input type="text" placeholder="Audio Link" readonly formControlName="audioLink">
+      <input type="text"
+             placeholder="Audio Link"
+             readonly
+             formControlName="audioLink">
       <br>
-      <input id="new-audio-input" type="file"
-            name="inputFile" accept="audio/*"
-            (change)="onInputFileChange($event)" >
+      <input id="new-audio-input"
+             type="file"
+             name="inputFile"
+             accept="audio/*"
+             (change)="onInputFileChange($event)">
 
-      <progress [attr.value]="progressValue" max="100" id="uploader"></progress>
+      <progress [attr.value]="progressValue"
+                max="100"
+                id="uploader"></progress>
     </div>
-    
+
     <br>
-    <button type="submit" [disabled]="form.invalid">Create</button>
+    <button type="submit"
+            [disabled]="form.invalid">Create</button>
 
   </form>
-  
-  
+
+
 </div>

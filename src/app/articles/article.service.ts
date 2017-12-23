@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from "angularfire2";
-import { Article } from "app/articles/article";
-import { Observable } from "rxjs/Observable";
-import { MetaDataService } from "app/meta-data.service";
+import { AngularFire } from 'angularfire2';
+import { Article } from '../articles/article';
+import { Observable } from 'rxjs/Observable';
+import { MetaDataService } from '../meta-data.service';
 
 @Injectable()
 export class ArticleService {
-
-  constructor(private af: AngularFire, private meta: MetaDataService) { }
+  constructor(private af: AngularFire, private meta: MetaDataService) {}
 
   createArticle(article: Article) {
     article.createdOn = Date.now();
@@ -25,7 +24,7 @@ export class ArticleService {
   }
 
   categoryArticles(category): Observable<any[]> {
-    return this.af.database.list(`/articles`, { 
+    return this.af.database.list(`/articles`, {
       query: {
         orderByChild: 'category',
         equalTo: category
@@ -40,11 +39,13 @@ export class ArticleService {
   // Helper function, turns title into slug
   createSlug(title: string): string {
     // https://gist.github.com/mathewbyrne/1280286
-    return title.toString().toLowerCase()
-      .replace(/\s+/g, '-')           // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-      .replace(/^-+/, '')             // Trim - from start of text
-      .replace(/-+$/, '');            // Trim - from end of text
+    return title
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-') // Replace spaces with -
+      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+      .replace(/\-\-+/g, '-') // Replace multiple - with single -
+      .replace(/^-+/, '') // Trim - from start of text
+      .replace(/-+$/, ''); // Trim - from end of text
   }
 }
