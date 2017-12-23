@@ -8,7 +8,7 @@ import { ArticlesComponent } from './articles.component';
 import { ArticleComponent } from './article/article.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { ArticleCategoryComponent } from './article-category/article-category.component';
-import { KingstonSharedModule } from '../shared/shared.module';
+// import { KingstonSharedModule } from '../shared/shared.module';
 
 import { EditorModule, SharedModule } from 'primeng/primeng';
 

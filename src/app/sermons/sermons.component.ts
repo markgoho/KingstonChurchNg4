@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { Sermon } from '../sermons/sermon';
 import { SermonService } from '../sermons/sermon.service';
@@ -16,7 +15,7 @@ export class SermonsComponent implements OnInit {
   constructor(private sermonService: SermonService) {}
 
   ngOnInit() {
-    this.currentAudioSermon$ = this.sermonService.latestSermon;
+    // this.currentAudioSermon$ = this.sermonService.latestSermon;
     this.sermonCategories$ = this.sermonService.sermonCategories;
   }
 }

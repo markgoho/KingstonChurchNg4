@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Article } from '../articles/article';
 import { Observable } from 'rxjs/Observable';
 import { MetaDataService } from '../meta-data.service';
 
 @Injectable()
 export class ArticleService {
-  constructor(private af: AngularFire, private meta: MetaDataService) {}
+  constructor(private af: AngularFireDatabase, private meta: MetaDataService) {}
 
   createArticle(article: Article) {
     article.createdOn = Date.now();
     article.description = this.meta.generateDescription(article.content);
     const slug = this.createSlug(article.title);
-    this.af.database.object(`/articles/${slug}`).set(article);
+    this.af.object(`/articles/${slug}`).set(article);
   }
 
   get articleCategories(): Observable<any[]> {
-    return this.af.database.list('/articleCategories');
+    return this.af.list('/articleCategories').valueChanges();
   }
 
-  articleCategory(category): Observable<any> {
-    return this.af.database.object(`/articleCategories/${category}`);
+  articleCategory(category: any): Observable<any> {
+    return this.af.object(`/articleCategories/${category}`).valueChanges();
   }
 
-  categoryArticles(category): Observable<any[]> {
-    return this.af.database.list(`/articles`, {
-      query: {
-        orderByChild: 'category',
-        equalTo: category
-      }
-    });
-  }
+  // categoryArticles(category: any): Observable<any[]> {
+  //   return this.af.list(`/articles`, {
+  //     query: {
+  //       orderByChild: 'category',
+  //       equalTo: category
+  //     }
+  //   }).valueChanges();
+  // }
 
-  getArticle(slug: string): Observable<Article> {
-    return this.af.database.object(`/articles/${slug}`);
+  getArticle(slug: string): Observable<any> {
+    return this.af.object(`/articles/${slug}`).valueChanges();
   }
 
   // Helper function, turns title into slug

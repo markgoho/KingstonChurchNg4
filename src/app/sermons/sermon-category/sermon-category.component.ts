@@ -23,8 +23,8 @@ export class SermonCategoryComponent implements OnInit {
     this.category = this.route.params.switchMap(data => {
       return this.sermonService.sermonCategory(data['category']);
     });
-    this.sermonList = this.route.params.switchMap(data => {
-      return this.sermonService.sermonsByCategory(data['category']);
-    });
+    // this.sermonList = this.route.params.switchMap(data => {
+    //   return this.sermonService.sermonsByCategory(data['category']);
+    // });
   }
 }

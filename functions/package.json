@@ -3,9 +3,9 @@
   "scripts": {
     "build":
       "./node_modules/.bin/tslint -p tslint.json && ./node_modules/.bin/tsc",
-    "serve": "yarn build && firebase serve --only functions",
-    "shell": "yarn build && firebase experimental:functions:shell",
-    "start": "yarn shell",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase experimental:functions:shell",
+    "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },

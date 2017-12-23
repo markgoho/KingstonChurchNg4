@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { Sermon } from '../sermons/sermon';
+// import { Sermon } from '../sermons/sermon';
 
 @Injectable()
 export class SermonService {
-  constructor(private af: AngularFire) {}
+  constructor(private af: AngularFireDatabase) {}
 
-  createSermon(sermon) {
+  createSermon(sermon: any) {
     sermon.createdOn = Date.now();
-    let { book, chapter, verse } = sermon.scripture;
+    const { book, chapter, verse } = sermon.scripture;
     sermon.scriptureRef = `${book} ${chapter}:${verse}`;
     // TODO: generate a meta description
     sermon.slug = this.createSlug(sermon.title);
-    this.af.database.list('/sermons').push(sermon);
+    this.af.list('/sermons').push(sermon);
   }
 
   createSlug(title: string): string {
@@ -28,38 +28,38 @@ export class SermonService {
       .replace(/-+$/, ''); // Trim - from end of text
   }
 
-  get latestSermon(): Observable<Sermon[]> {
-    return this.af.database.list('/sermons', {
-      query: {
-        orderByChild: 'createdOn',
-        limitToLast: 1
-      }
-    });
-  }
+  // get latestSermon(): Observable<Sermon[]> {
+  //   return this.af.list('/sermons', {
+  //     query: {
+  //       orderByChild: 'createdOn',
+  //       limitToLast: 1
+  //     }
+  //   });
+  // }
 
   get sermonCategories(): Observable<any[]> {
-    return this.af.database.list('/sermonCategories');
+    return this.af.list('/sermonCategories').valueChanges();
   }
 
-  getSermon(sermonName): Observable<Sermon[]> {
-    return this.af.database.list('/sermons', {
-      query: {
-        orderByChild: 'slug',
-        equalTo: sermonName
-      }
-    });
+  // getSermon(sermonName): Observable<Sermon[]> {
+  //   return this.af.list('/sermons', {
+  //     query: {
+  //       orderByChild: 'slug',
+  //       equalTo: sermonName
+  //     }
+  //   });
+  // }
+
+  sermonCategory(category: any): Observable<any> {
+    return this.af.object(`/sermonCategories/${category}`).valueChanges();
   }
 
-  sermonCategory(category): Observable<any> {
-    return this.af.database.object(`/sermonCategories/${category}`);
-  }
-
-  sermonsByCategory(category): Observable<Sermon[]> {
-    return this.af.database.list('/sermons', {
-      query: {
-        orderByChild: 'category',
-        equalTo: category
-      }
-    });
-  }
+  // sermonsByCategory(category: any): Observable<Sermon[]> {
+  //   return this.af.list('/sermons', {
+  //     query: {
+  //       orderByChild: 'category',
+  //       equalTo: category
+  //     }
+  //   });
+  // }
 }

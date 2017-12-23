@@ -1,11 +1,8 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SermonService } from '../../sermons/sermon.service';
 
-import { AngularFire } from 'angularfire2';
-
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-create-sermon',
@@ -97,65 +94,66 @@ export class CreateSermonComponent implements OnInit {
     ]
   };
 
-  progressValue: number = 0;
+  progressValue = 0;
 
   constructor(
     private fb: FormBuilder,
-    private af: AngularFire,
+    // private af: AngularFire,
     private sermonService: SermonService
   ) {}
 
   ngOnInit() {}
 
-  onInputFileChange(evt: Event) {
-    let target: HTMLInputElement = <HTMLInputElement>event.target;
-    let files: FileList = target.files;
+  // onInputFileChange(event: Event) {
+  //   const target: HTMLInputElement = <HTMLInputElement>event.target;
+  //   const files: FileList = target.files;
 
-    if (files && files[0]) {
-      this.upload(files[0]);
-    }
-  }
+  //   if (files && files[0]) {
+  //     this.upload(files[0]);
+  //   }
+  // }
 
-  upload(file) {
-    // Construct the path
-    let storageRef = firebase.storage().ref();
-    let path = `/sermons/${file.name}`;
-    let audioPath = storageRef.child(path);
+  // upload(file: any) {
+  //   // Construct the path
+  //   const storageRef = firebase.storage().ref();
+  //   const path = `/sermons/${file.name}`;
+  //   const audioPath = storageRef.child(path);
 
-    const scripture = `${this.form.get('scripture.book').value} ${
-      this.form.get('scripture.chapter').value
-    }:${this.form.get('scripture.verse').value}`;
+  //   const scripture = `${this.form.get('scripture.book').value} ${
+  //     this.form.get('scripture.chapter').value
+  //   }:${this.form.get('scripture.verse').value}`;
 
-    const metadata = {
-      contentType: file.type,
-      customMetadata: {
-        name: this.form.get('title').value,
-        scripture
-      }
-    };
+  //   const metadata = {
+  //     contentType: file.type,
+  //     customMetadata: {
+  //       name: this.form.get('title').value,
+  //       scripture
+  //     }
+  //   };
 
-    // https://firebase.google.com/docs/storage/web/upload-files
-    let audioTask = audioPath.put(file, metadata);
+  //   // https://firebase.google.com/docs/storage/web/upload-files
+  //   const audioTask = audioPath.put(file, metadata);
 
-    audioTask.on(
-      'state_changed',
-      // Called any time the state changes
-      snapshot => {
-        let percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-        this.progressValue = percentage;
-      },
-      // Called on errors
-      error => {
-        console.error('There was an error uploading', error);
-      },
-      // Called on complete
-      () => {
-        let url = audioTask.snapshot.downloadURL;
-        console.log('Uploaded audio file to', url);
-        this.form.patchValue({ audioLink: url });
-      }
-    );
-  }
+  //   audioTask.on(
+  //     'state_changed',
+  //     // Called any time the state changes
+  //     snapshot => {
+  //       const percentage =
+  //         snapshot.bytesTransferred / snapshot.totalBytes * 100;
+  //       this.progressValue = percentage;
+  //     },
+  //     // Called on errors
+  //     error => {
+  //       console.error('There was an error uploading', error);
+  //     },
+  //     // Called on complete
+  //     () => {
+  //       const url = audioTask.snapshot.downloadURL;
+  //       console.log('Uploaded audio file to', url);
+  //       this.form.patchValue({ audioLink: url });
+  //     }
+  //   );
+  // }
 
   onSubmit() {
     this.sermonService.createSermon(this.form.value);

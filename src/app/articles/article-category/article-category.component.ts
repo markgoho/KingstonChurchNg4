@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { ArticleService } from '../../articles/article.service';
@@ -24,8 +24,8 @@ export class ArticleCategoryComponent implements OnInit {
     this.category = this.route.params.switchMap(data => {
       return this.articleService.articleCategory(data['category']);
     });
-    this.articleList = this.route.params.switchMap(data =>
-      this.articleService.categoryArticles(data['category'])
-    );
+    // this.articleList = this.route.params.switchMap(data =>
+    //   this.articleService.categoryArticles(data['category'])
+    // );
   }
 }
