@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SermonsComponent } from '../sermons/sermons.component';
-import { CreateSermonComponent } from '../sermons/create-sermon/create-sermon.component';
-import { SermonComponent } from '../sermons/sermon/sermon.component';
-import { SermonCategoryComponent } from '../sermons/sermon-category/sermon-category.component';
+import { CreateSermonComponent } from './containers/create-sermon/create-sermon.component';
+import { SermonsComponent } from './containers/sermons/sermons.component';
+import { SermonComponent } from './components/sermon/sermon.component';
+import { SermonCategoryComponent } from './components/category-list/sermon-category.component';
 
 const routes: Routes = [
-  { path: 'create', component: CreateSermonComponent },
   {
     path: '',
-    children: [
-      { path: '', component: SermonsComponent },
-      {
-        path: ':category',
-        component: SermonCategoryComponent,
-        children: [{ path: ':sermon-name', component: SermonComponent }]
-      }
-    ]
+    redirectTo: 'all'
+  },
+  { path: 'create', component: CreateSermonComponent },
+  { path: 'all', component: SermonsComponent },
+  {
+    path: ':category',
+    component: SermonCategoryComponent,
+    children: [{ path: ':sermon-name', component: SermonComponent }]
   }
 ];
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SermonService } from '../../sermons/sermon.service';
+import { SermonService } from '../../services/sermon.service';
 
 // import * as firebase from 'firebase';
 

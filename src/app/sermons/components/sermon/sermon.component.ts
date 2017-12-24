@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 // import { SermonService } from '../../sermons/sermon.service';
 // import { ActivatedRoute } from '@angular/router';
-import { MetaDataService } from '../../meta-data.service';
+
 import { Observable } from 'rxjs/Observable';
-import { Sermon } from '../../sermons/sermon';
+import { Sermon } from '../../models/sermon';
+import { MetaDataService } from '../../../meta-data.service';
 
 @Component({
   selector: 'app-sermon',

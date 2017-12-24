@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SermonService } from '../../sermons/sermon.service';
+
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/switchMap';
+import { SermonService } from '../../services/sermon.service';
 
 @Component({
   selector: 'app-sermon-category',

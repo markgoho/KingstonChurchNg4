@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Sermon } from '../sermons/sermon';
-import { SermonService } from '../sermons/sermon.service';
+import { Sermon } from '../../models/sermon';
+import { SermonService } from '../../services/sermon.service';
 
 @Component({
   selector: 'app-sermons',
