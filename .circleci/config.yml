@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/my-project
     docker:
-      - image: circleci/node:6-browsers
+      - image: circleci/node:7-browsers
     steps:
       - checkout
       - restore_cache:
@@ -13,5 +13,5 @@ jobs:
           key: my-project-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-      - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+      - run: xvfb-run -a yarn test -- --single-run --no-progress --browser=ChromeNoSandbox
+      # - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
