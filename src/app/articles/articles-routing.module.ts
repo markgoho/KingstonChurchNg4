@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArticlesComponent } from '../articles/articles.component';
-import { ArticleComponent } from '../articles/article/article.component';
-import { CreateArticleComponent } from '../articles/create-article/create-article.component';
-import { ArticleCategoryComponent } from '../articles/article-category/article-category.component';
+import { CreateArticleComponent } from './containers/create-article/create-article.component';
+import { ArticlesComponent } from './containers/articles/articles.component';
+import { ArticleCategoryComponent } from './components/category-list/category-list.component';
+import { ArticleComponent } from './components/article/article.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'all'
+  },
+  {
     path: 'create',
+    // add auth guard
     component: CreateArticleComponent
   },
   {
-    path: '',
-    children: [
-      { path: '', component: ArticlesComponent },
-      {
-        path: ':category',
-        component: ArticleCategoryComponent,
-        children: [{ path: ':article-name', component: ArticleComponent }]
-      }
-    ]
+    path: 'all',
+    component: ArticlesComponent
+  },
+  {
+    path: ':category',
+    component: ArticleCategoryComponent,
+    children: [{ path: ':article-name', component: ArticleComponent }]
   }
 ];
 

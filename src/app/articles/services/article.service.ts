@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Article } from '../articles/article';
 import { Observable } from 'rxjs/Observable';
-import { MetaDataService } from '../meta-data.service';
+import { Article } from '../models/article';
+import { MetaDataService } from '../../meta-data.service';
 
 @Injectable()
 export class ArticleService {

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../../articles/article.service';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from '../../articles/article';
 
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
-import { MetaDataService } from '../../meta-data.service';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
+import { MetaDataService } from '../../../meta-data.service';
 
 @Component({
   selector: 'app-article',

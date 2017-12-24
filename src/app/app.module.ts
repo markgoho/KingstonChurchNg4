@@ -14,10 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { BibleStudiesComponent } from './bible-studies/bible-studies.component';
 import { KingstonSharedModule } from './shared/shared.module';
-import { ArticleService } from './articles/article.service';
 import { MetaDataService } from './meta-data.service';
 import { SermonService } from './sermons/sermon.service';
 import { EditorModule, SharedModule } from 'primeng/primeng';
+import { ArticleService } from './articles/services/article.service';
 
 @NgModule({
   declarations: [

@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { ArticleService } from '../../articles/article.service';
-
 import 'rxjs/add/operator/switchMap';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
-  selector: 'app-article-category',
-  templateUrl: './article-category.component.html',
-  styleUrls: ['./article-category.component.scss']
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss']
 })
 export class ArticleCategoryComponent implements OnInit {
   category: Observable<string>;
